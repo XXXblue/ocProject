@@ -1,5 +1,12 @@
 package com.online.college.controller;
 
+/**
+ * @Author: XBlue
+ * @Date: Create in 2018/2/1120:12
+ * @Description:
+ * @Modified By:
+ */
+
 import com.online.college.core.test.service.TestService;
 import com.online.college.param.TestParam;
 import com.online.util.JsonData;
@@ -10,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 
-
 /**
  * @Author: XBlue
  * @Date: Create in 2018/2/1018:27
@@ -20,7 +26,7 @@ import javax.annotation.Resource;
 @Controller
 @RequestMapping("/test")
 @Slf4j
-public class Test {
+public class Test{
 
     @Resource
     private TestService testService;

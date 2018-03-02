@@ -11,7 +11,7 @@
     <result column="sub_classify_name" property="subClassifyName" jdbcType="VARCHAR" />
     <result column="direction" property="direction" jdbcType="VARCHAR" />
     <result column="username" property="username" jdbcType="VARCHAR" />
-    <result column="level" property="level" jdbcType="BIT" />
+    <result column="level" property="level" jdbcType="VARCHAR" />
     <result column="free" property="free" jdbcType="BIT" />
     <result column="price" property="price" jdbcType="DECIMAL" />
     <result column="time" property="time" jdbcType="VARCHAR" />
@@ -61,7 +61,7 @@
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
       #{classify,jdbcType=VARCHAR}, #{classifyName,jdbcType=VARCHAR}, #{subClassify,jdbcType=VARCHAR}, 
       #{subClassifyName,jdbcType=VARCHAR}, #{direction,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
-      #{level,jdbcType=BIT}, #{free,jdbcType=BIT}, #{price,jdbcType=DECIMAL}, #{time,jdbcType=VARCHAR}, 
+      #{level,jdbcType=VARCHAR}, #{free,jdbcType=BIT}, #{price,jdbcType=DECIMAL}, #{time,jdbcType=VARCHAR}, 
       #{onsale,jdbcType=BIT}, #{picture,jdbcType=VARCHAR}, #{recommend,jdbcType=BIT}, 
       #{weight,jdbcType=INTEGER}, #{studyCount,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
       #{createUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR}, 
@@ -172,7 +172,7 @@
         #{username,jdbcType=VARCHAR},
       </if>
       <if test="level != null" >
-        #{level,jdbcType=BIT},
+        #{level,jdbcType=VARCHAR},
       </if>
       <if test="free != null" >
         #{free,jdbcType=BIT},
@@ -246,7 +246,7 @@
         username = #{username,jdbcType=VARCHAR},
       </if>
       <if test="level != null" >
-        level = #{level,jdbcType=BIT},
+        level = #{level,jdbcType=VARCHAR},
       </if>
       <if test="free != null" >
         free = #{free,jdbcType=BIT},
@@ -303,7 +303,7 @@
       sub_classify_name = #{subClassifyName,jdbcType=VARCHAR},
       direction = #{direction,jdbcType=VARCHAR},
       username = #{username,jdbcType=VARCHAR},
-      level = #{level,jdbcType=BIT},
+      level = #{level,jdbcType=VARCHAR},
       free = #{free,jdbcType=BIT},
       price = #{price,jdbcType=DECIMAL},
       time = #{time,jdbcType=VARCHAR},
@@ -330,7 +330,7 @@
       sub_classify_name = #{subClassifyName,jdbcType=VARCHAR},
       direction = #{direction,jdbcType=VARCHAR},
       username = #{username,jdbcType=VARCHAR},
-      level = #{level,jdbcType=BIT},
+      level = #{level,jdbcType=VARCHAR},
       free = #{free,jdbcType=BIT},
       price = #{price,jdbcType=DECIMAL},
       time = #{time,jdbcType=VARCHAR},
@@ -346,4 +346,80 @@
       del = #{del,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="queryList" parameterType="map" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM t_course
+    <trim prefix="WHERE " prefixOverrides="AND |OR ">
+      <if test="dto.type != null">
+        AND type = #{dto.type}
+      </if>
+      <if test="dto.classify != null">
+        AND classify = #{dto.classify}
+      </if>
+      <if test="dto.subClassify != null">
+        AND sub_classify = #{dto.subClassify}
+      </if>
+      <if test="dto.direction != null">
+        AND direction = #{dto.direction}
+      </if>
+      <if test="dto.username != null">
+        AND username = #{dto.username}
+      </if>
+      <if test="dto.free != null">
+        AND free = #{dto.free}
+      </if>
+      <if test="dto.onsale != null">
+        AND onsale = #{dto.onsale}
+      </if>
+    </trim>
+    <if test="dto.sortField != null">
+      ORDER BY ${dto.sortField}  ${dto.sortDirection}
+    </if>
+    <if test="dto.count != null">
+      LIMIT 0, #{dto.count}
+    </if>
+  </select>
+
+  <select id="queryPageNum" parameterType="map" resultType="int">
+    SELECT
+    count(1)
+    FROM t_course
+    <include refid="queryPageParams" />
+    <if test="page.sortField !=null ">
+      ORDER BY ${page.sortField} ${page.sortDirection}
+    </if>
+  </select>
+
+  <select id="queryPage" parameterType="map" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM t_course
+    <include refid="queryPageParams" />
+    <if test="page.sortField !=null ">
+      ORDER BY ${page.sortField} ${page.sortDirection}
+    </if>
+    limit #{page.startIndex},#{page.pageSize}
+  </select>
+
+  <select id="selectCourseClassifyId" parameterType="map" resultType="int">
+    SELECT id
+    from t_consts_classify
+    WHERE
+    code = (select t_course.classify FROM t_course WHERE t_course.id = #{courseId});
+  </select>
+
+  <sql id="queryPageParams">
+      <where>
+        <if test="course.classify != null">
+          AND classify = #{course.classify}
+        </if>
+        <if test="course.subClassify != null">
+          AND sub_classify = #{course.subClassify}
+        </if>
+        <if test="course.onsale != null">
+          AND onsale = #{course.onsale}
+        </if>
+      </where>
+  </sql>
 </mapper>

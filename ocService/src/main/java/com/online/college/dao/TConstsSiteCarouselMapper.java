@@ -1,6 +1,9 @@
 package com.online.college.dao;
 
 import com.online.college.module.TConstsSiteCarousel;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface TConstsSiteCarouselMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +17,6 @@ public interface TConstsSiteCarouselMapper {
     int updateByPrimaryKeySelective(TConstsSiteCarousel record);
 
     int updateByPrimaryKey(TConstsSiteCarousel record);
+
+    List<TConstsSiteCarousel> queryCarousel(@Param("count") Integer count);
 }

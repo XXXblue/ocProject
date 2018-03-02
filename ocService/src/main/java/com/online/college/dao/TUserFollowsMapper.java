@@ -1,6 +1,7 @@
 package com.online.college.dao;
 
 import com.online.college.module.TUserFollows;
+import org.apache.ibatis.annotations.Param;
 
 public interface TUserFollowsMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +15,6 @@ public interface TUserFollowsMapper {
     int updateByPrimaryKeySelective(TUserFollows record);
 
     int updateByPrimaryKey(TUserFollows record);
+
+    TUserFollows selByUserIdAndFollowId(@Param("userId") Integer teacherId, @Param("followId")Integer id);
 }

@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50525
-Source Host           : 127.0.0.1:3306
-Source Database       : ocdb
+Source Server Version : 50544
+Source Host           : localhost:3306
+Source Database       : test2
 
 Target Server Type    : MYSQL
-Target Server Version : 50525
+Target Server Version : 50544
 File Encoding         : 65001
 
-Date: 2017-05-06 23:57:22
+Date: 2018-03-03 01:08:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,7 @@ CREATE TABLE `t_auth_user` (
   `gender` tinyint(1) NOT NULL DEFAULT '1' COMMENT '性别',
   `header` varchar(128) NOT NULL DEFAULT '' COMMENT '头像',
   `mobile` varchar(15) NOT NULL DEFAULT '' COMMENT '手机号码',
-  `status` tinyint(1) NOT NULL DEFAULT '2' COMMENT '状态：待审核（0），有效（1），无效（3）',
+  `status` varchar(1) NOT NULL DEFAULT '2' COMMENT '状态：待审核（0），有效（1），无效（3）',
   `birthday` date NOT NULL DEFAULT '1900-01-01',
   `education` varchar(20) NOT NULL DEFAULT '' COMMENT '学历：大专、本科、硕士、博士、博士后',
   `college_code` varchar(50) NOT NULL DEFAULT '' COMMENT '大学编码',
@@ -51,35 +51,40 @@ CREATE TABLE `t_auth_user` (
   `del` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `T_AUTH_USER_USERNAME_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 -- ----------------------------
 -- Records of t_auth_user
 -- ----------------------------
-INSERT INTO `t_auth_user` VALUES ('1', '王阳明', 'wangyangming', '96E79218965EB72C92A549DD5A330112', '0', '/default/all/0/e811fbdec9ed45f9ba07fd8063f7194c.jpeg', '18001584130', '2', '1900-01-01', '博士后', '', '华南大学dsf', 'fasf', '高级讲师', '擅长人工智能算法11', '', 'zhangsan', '12345678', '0000-00-00 00:00:00', '127.0.0.1', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-05-06 17:08:46', 'system', '0');
-INSERT INTO `t_auth_user` VALUES ('2', '李四', 'lisi', '96E79218965EB72C92A549DD5A330112', '1', '', '18001584131', '0', '1900-01-01', '本科', '', '华东大学', '', '特级讲师', '擅长人工智能算法', '', 'lisi', '', '0000-00-00 00:00:00', '127.0.0.1', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-03-27 22:28:21', 'system', '0');
-INSERT INTO `t_auth_user` VALUES ('3', '赵六', 'zhaoliu', '96E79218965EB72C92A549DD5A330112', '1', '', '18001584132', '2', '1900-01-01', '本科', '', '华中大学', '', '特级讲师', '擅长C语言', '', '', '', '0000-00-00 00:00:00', '127.0.0.1', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-03-27 22:28:21', 'system', '0');
-INSERT INTO `t_auth_user` VALUES ('4', '王五', 'wangwu', '96E79218965EB72C92A549DD5A330112', '1', '', '18001584133', '2', '1900-01-01', '硕士', '', '华南大学', '', '高级讲师', '擅长PHP', '', '', '', '0000-00-00 00:00:00', '127.0.0.1', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-03-27 22:28:22', 'system', '0');
-INSERT INTO `t_auth_user` VALUES ('5', '周八', 'zhouba', '96E79218965EB72C92A549DD5A330112', '1', '', '18001584134', '2', '1900-01-01', '博士', '', '华中大学', '', '特级讲师', '擅长C、Java、PHP', '', '', '', '0000-00-00 00:00:00', '127.0.0.1', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-03-27 22:28:23', 'system', '0');
-INSERT INTO `t_auth_user` VALUES ('6', '王阳明', 'wangyangming2', '96E79218965EB72C92A549DD5A330112', '1', '', '18001584135', '2', '1900-01-01', '博士后', '', '华南大学', '', '高级讲师', '擅长PHP', '', '', '', '0000-00-00 00:00:00', '127.0.0.1', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-05-06 15:11:27', 'system', '0');
-INSERT INTO `t_auth_user` VALUES ('7', '', '111111', '96E79218965EB72C92A549DD5A330112', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-05-06 01:11:40', 'system', '0');
-INSERT INTO `t_auth_user` VALUES ('8', '', '1111112', '96E79218965EB72C92A549DD5A330112', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-05-06 01:11:40', 'system', '0');
-INSERT INTO `t_auth_user` VALUES ('9', '', '11111123', '96E79218965EB72C92A549DD5A330112', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-05-06 01:11:40', 'system', '0');
-INSERT INTO `t_auth_user` VALUES ('10', '', '22222222', '96E79218965EB72C92A549DD5A330112', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-05-06 01:11:40', 'system', '0');
-INSERT INTO `t_auth_user` VALUES ('11', '', '222222223', '96E79218965EB72C92A549DD5A330112', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-05-06 01:11:40', 'system', '0');
-INSERT INTO `t_auth_user` VALUES ('14', '新的test00005', 'test0005', '96E79218965EB72C92A549DD5A330112', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-05-06 01:11:40', 'system', '0');
-INSERT INTO `t_auth_user` VALUES ('15', '', 'zhangsan111', '96E79218965EB72C92A549DD5A330112', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-05-06 01:11:40', 'system', '0');
-INSERT INTO `t_auth_user` VALUES ('16', '', 'zhangsan112', '96E79218965EB72C92A549DD5A330112', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-05-06 01:11:40', 'system', '0');
-INSERT INTO `t_auth_user` VALUES ('17', '', 'wangyangmi2', '96E79218965EB72C92A549DD5A330112', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-05-06 01:11:40', 'system', '0');
-INSERT INTO `t_auth_user` VALUES ('18', '', 'wangyangmi11', '96E79218965EB72C92A549DD5A330112', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-05-06 01:11:40', 'system', '0');
-INSERT INTO `t_auth_user` VALUES ('19', '', 'zhangsan11111', '96E79218965EB72C92A549DD5A330112', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-05-06 01:11:40', 'system', '0');
-INSERT INTO `t_auth_user` VALUES ('20', '', 'zhangsan111111', '96E79218965EB72C92A549DD5A330112', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-05-06 01:11:40', 'system', '0');
-INSERT INTO `t_auth_user` VALUES ('21', '', '011111', '96E79218965EB72C92A549DD5A330112', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-05-06 01:11:40', 'system', '0');
-INSERT INTO `t_auth_user` VALUES ('22', '', 'test001', '96E79218965EB72C92A549DD5A330112', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-05-06 01:11:40', 'system', '0');
-INSERT INTO `t_auth_user` VALUES ('23', '', 'test002', '96E79218965EB72C92A549DD5A330112', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-05-06 01:11:40', 'system', '0');
-INSERT INTO `t_auth_user` VALUES ('24', '', 'wangyangmi1212', '96E79218965EB72C92A549DD5A330112', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-05-06 15:24:14', 'system', '0');
-INSERT INTO `t_auth_user` VALUES ('25', '', '11111111111', '7FA8282AD93047A4D6FE6111C93B308A', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-05-06 15:24:30', 'system', '0');
-INSERT INTO `t_auth_user` VALUES ('26', '', 'wangyangmi222', '96E79218965EB72C92A549DD5A330112', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2017-05-06 15:26:54', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('1', '王阳明', 'wangyangming', 'E10ADC3949BA59ABBE56E057F20F883E', '0', 'http://xiaojianyu-file-server.oss-cn-shenzhen.aliyuncs.com/student/00aa0b25-1cf9-45f9-a061-3ed9b2f96fde.jpg', '18001584130', '2', '1900-01-01', '博士后', '', '华南大学dsf', 'fasf', '高级讲师', '擅长人工智能算法11', '', 'zhangsan', '12345678', '0000-00-00 00:00:00', '127.0.0.1', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-22 00:21:51', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('2', '李四', 'lisi', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '18001584131', '0', '1900-01-01', '本科', '', '华东大学', '', '特级讲师', '擅长人工智能算法', '', 'lisi', '', '0000-00-00 00:00:00', '127.0.0.1', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:01:14', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('3', '赵六', 'zhaoliu', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '18001584132', '2', '1900-01-01', '本科', '', '华中大学', '', '特级讲师', '擅长C语言', '', '', '', '0000-00-00 00:00:00', '127.0.0.1', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:01:10', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('4', '王五', 'wangwu', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '18001584133', '2', '1900-01-01', '硕士', '', '华南大学', '', '高级讲师', '擅长PHP', '', '', '', '0000-00-00 00:00:00', '127.0.0.1', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:01:09', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('5', '周八', 'zhouba', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '18001584134', '2', '1900-01-01', '博士', '', '华中大学', '', '特级讲师', '擅长C、Java、PHP', '', '', '', '0000-00-00 00:00:00', '127.0.0.1', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:01:08', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('6', '王阳明', 'wangyangming2', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '18001584135', '2', '1900-01-01', '博士后', '', '华南大学', '', '高级讲师', '擅长PHP', '', '', '', '0000-00-00 00:00:00', '127.0.0.1', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:01:08', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('7', '张三', '111111', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-23 00:06:26', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('8', '', '1111112', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:01:06', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('9', '', '11111123', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:01:05', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('10', '', '22222222', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:01:03', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('11', '', '222222223', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:01:02', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('14', '新的test00005', 'test0005', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:01:01', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('15', '', 'zhangsan111', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:01:00', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('16', '', 'zhangsan112', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:00:59', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('17', '张洒', 'wangyangmi2', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-23 00:06:39', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('18', '', 'wangyangmi11', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:00:57', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('19', '', 'zhangsan11111', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:00:58', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('20', '', 'zhangsan111111', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:00:56', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('21', '', '011111', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:00:55', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('22', '', 'test001', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:00:54', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('23', '', 'test002', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:00:53', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('24', '', 'wangyangmi1212', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:00:51', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('25', '', '11111111111', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:00:50', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('26', '', 'wangyangmi222', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:00:49', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('27', '', '1111111', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:00:48', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('28', '', 'druid', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:00:47', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('29', '', 'xjy', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:00:29', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('30', '', 'xjy2', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:02:14', 'system', '0');
+INSERT INTO `t_auth_user` VALUES ('31', '', 'xjy3', 'E10ADC3949BA59ABBE56E057F20F883E', '1', '', '', '2', '1900-01-01', '', '', '', '', '', '', '', '', '', '0000-00-00 00:00:00', '', '', '', '', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 14:04:02', 'system', '0');
 
 -- ----------------------------
 -- Table structure for t_consts_classify
@@ -97,7 +102,7 @@ CREATE TABLE `t_consts_classify` (
   `update_user` varchar(32) NOT NULL DEFAULT 'system',
   `del` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COMMENT='课程类别表';
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COMMENT='课程类别表';
 
 -- ----------------------------
 -- Records of t_consts_classify
@@ -129,11 +134,7 @@ INSERT INTO `t_consts_classify` VALUES ('26', '云计算', 'cloud', 'cb', '2', '
 INSERT INTO `t_consts_classify` VALUES ('27', '动画动效', 'movie', 'ui', '1', '0000-00-00 00:00:00', 'system', '2017-03-06 23:34:38', 'system', '0');
 INSERT INTO `t_consts_classify` VALUES ('28', 'APPUI设计', 'appui', 'ui', '2', '0000-00-00 00:00:00', 'system', '2017-03-06 23:34:39', 'system', '0');
 INSERT INTO `t_consts_classify` VALUES ('29', '设计工具', 'tools', 'ui', '3', '0000-00-00 00:00:00', 'system', '2017-03-06 23:34:41', 'system', '0');
-INSERT INTO `t_consts_classify` VALUES ('32', 'sss', 'sss', '0', '0', '0000-00-00 00:00:00', 'system', '2017-04-04 15:55:52', 'system', '1');
-INSERT INTO `t_consts_classify` VALUES ('33', '机器学习', 'jqxx', '0', '0', '0000-00-00 00:00:00', 'system', '2017-04-06 21:49:07', 'system', '1');
-INSERT INTO `t_consts_classify` VALUES ('34', '无人驾驶', 'wrjs', '0', '0', '0000-00-00 00:00:00', 'system', '2017-04-04 15:56:25', 'system', '1');
-INSERT INTO `t_consts_classify` VALUES ('35', '无人驾驶', 'wrjs', 'jqxx', '0', '0000-00-00 00:00:00', 'system', '2017-04-04 15:56:35', 'system', '0');
-INSERT INTO `t_consts_classify` VALUES ('36', 'Oracle', 'oracle1', 'jqxx', '0', '0000-00-00 00:00:00', 'system', '2017-04-04 16:11:26', 'system', '1');
+INSERT INTO `t_consts_classify` VALUES ('37', '人工智能', '11', '0', '0', '2018-02-24 14:15:22', 'system', '2018-02-26 19:16:15', 'system', '0');
 
 -- ----------------------------
 -- Table structure for t_consts_college
@@ -143,23 +144,38 @@ CREATE TABLE `t_consts_college` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL DEFAULT '' COMMENT '名称',
   `code` varchar(50) NOT NULL DEFAULT '' COMMENT '编码',
-  `picture` varchar(100) NOT NULL DEFAULT '' COMMENT '图片',
+  `picture` varchar(100) DEFAULT '' COMMENT '图片',
   `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `create_user` varchar(32) NOT NULL DEFAULT 'system',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `update_user` varchar(32) NOT NULL DEFAULT 'system',
   `del` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8 COMMENT='高校表结构';
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8 COMMENT='高校表结构';
 
 -- ----------------------------
 -- Records of t_consts_college
 -- ----------------------------
-INSERT INTO `t_consts_college` VALUES ('6', '中南大学中南大学', 'zndx', '', '0000-00-00 00:00:00', 'system', '2017-05-03 23:29:51', 'system', '0');
+INSERT INTO `t_consts_college` VALUES ('6', '中南大学中南大学', 'zndx', '', '0000-00-00 00:00:00', 'system', '2018-02-19 17:16:48', 'system', '0');
 INSERT INTO `t_consts_college` VALUES ('7', '上海大学', 'shdx', '', '0000-00-00 00:00:00', 'system', '2017-03-31 22:52:53', 'system', '0');
 INSERT INTO `t_consts_college` VALUES ('50', '苏州大学', 'szdx', '', '0000-00-00 00:00:00', 'system', '2017-04-04 14:46:12', 'system', '0');
 INSERT INTO `t_consts_college` VALUES ('51', '南京大学', 'njdx', '', '0000-00-00 00:00:00', 'system', '2017-04-04 14:46:21', 'system', '0');
 INSERT INTO `t_consts_college` VALUES ('52', '江苏大学', 'jsdx', '', '0000-00-00 00:00:00', 'system', '2017-04-04 14:46:38', 'system', '0');
+INSERT INTO `t_consts_college` VALUES ('63', '上海财经大学', 'shcjdx', null, '2018-02-19 17:20:12', 'system', '2018-02-19 17:20:12', 'system', '0');
+INSERT INTO `t_consts_college` VALUES ('64', '清华大学', 'qhdx', null, '2018-02-19 21:10:19', 'system', '2018-02-19 21:10:19', 'system', '0');
+INSERT INTO `t_consts_college` VALUES ('65', '河北大学', 'hbdx', null, '2018-02-19 21:10:36', 'system', '2018-02-19 21:10:36', 'system', '0');
+INSERT INTO `t_consts_college` VALUES ('66', '南开大学', 'nkdx', null, '2018-02-19 21:10:52', 'system', '2018-02-19 21:10:52', 'system', '0');
+INSERT INTO `t_consts_college` VALUES ('67', '汕头大学', 'stdx', null, '2018-02-19 21:11:03', 'system', '2018-02-19 21:11:03', 'system', '0');
+INSERT INTO `t_consts_college` VALUES ('68', '深圳大学', 'szdx2', null, '2018-02-19 21:11:19', 'system', '2018-02-19 21:11:19', 'system', '0');
+INSERT INTO `t_consts_college` VALUES ('69', '上海大学2222', 'shdx1', null, '2018-02-19 22:37:59', 'system', '2018-02-26 19:17:55', 'system', '0');
+INSERT INTO `t_consts_college` VALUES ('70', '上海大学2', 'shdx2', null, '2018-02-19 22:38:18', 'system', '2018-02-19 22:38:18', 'system', '0');
+INSERT INTO `t_consts_college` VALUES ('71', '上海大学三', 'shdx3', null, '2018-02-19 22:38:32', 'system', '2018-02-19 22:38:32', 'system', '0');
+INSERT INTO `t_consts_college` VALUES ('72', '上海大学4', 'shdx4', null, '2018-02-19 22:38:47', 'system', '2018-02-19 22:38:47', 'system', '0');
+INSERT INTO `t_consts_college` VALUES ('73', '上海大学5', 'shdx5', null, '2018-02-19 22:38:59', 'system', '2018-02-19 22:38:59', 'system', '0');
+INSERT INTO `t_consts_college` VALUES ('74', '上海大学6', 'shdx6', null, '2018-02-19 22:39:10', 'system', '2018-02-19 22:39:10', 'system', '0');
+INSERT INTO `t_consts_college` VALUES ('75', '上海大学7', 'shdx7', null, '2018-02-19 22:39:25', 'system', '2018-02-19 22:39:25', 'system', '0');
+INSERT INTO `t_consts_college` VALUES ('76', '上海大学8', 'shdx8', null, '2018-02-19 22:39:37', 'system', '2018-02-19 22:39:37', 'system', '0');
+INSERT INTO `t_consts_college` VALUES ('77', '上海大学9', 'shdx9', null, '2018-02-19 22:39:48', 'system', '2018-02-19 22:39:48', 'system', '0');
 
 -- ----------------------------
 -- Table structure for t_consts_dictionary
@@ -191,7 +207,7 @@ DROP TABLE IF EXISTS `t_consts_site_carousel`;
 CREATE TABLE `t_consts_site_carousel` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL DEFAULT '' COMMENT '名称',
-  `picture` varchar(100) NOT NULL DEFAULT '' COMMENT '图片',
+  `picture` varchar(500) NOT NULL DEFAULT '' COMMENT '图片',
   `url` varchar(200) NOT NULL DEFAULT '' COMMENT '链接',
   `weight` int(11) NOT NULL DEFAULT '0' COMMENT '权重',
   `enable` tinyint(1) NOT NULL DEFAULT '0',
@@ -206,10 +222,10 @@ CREATE TABLE `t_consts_site_carousel` (
 -- ----------------------------
 -- Records of t_consts_site_carousel
 -- ----------------------------
-INSERT INTO `t_consts_site_carousel` VALUES ('1', '成为高级的android工程师', '/default/all/0/bc5008d7bf244baea7aa2b98465481c4.jpeg', 'http://baidu.com', '1', '1', '0000-00-00 00:00:00', 'system', '2017-04-06 21:54:50', 'system', '0');
-INSERT INTO `t_consts_site_carousel` VALUES ('2', '开发跨平台的教育系统', '/default/all/0/28bed8dc4b5e48078a1a364a4b624a0d.jpeg', 'http://baidu.com', '1', '1', '0000-00-00 00:00:00', 'system', '2017-04-27 22:57:39', 'system', '0');
-INSERT INTO `t_consts_site_carousel` VALUES ('3', 'ReactJS实战', '/default/all/0/fab11ebb70ca48aca51af0bb42a05530.jpeg', 'http://baidu.com', '1', '1', '0000-00-00 00:00:00', 'system', '2017-04-27 22:57:41', 'system', '0');
-INSERT INTO `t_consts_site_carousel` VALUES ('4', 'AngularJS模仿拉钩网', '/default/all/0/4db0cf1dd51349219c252983c9cba09b.jpeg', 'http://baidu.com', '1', '1', '0000-00-00 00:00:00', 'system', '2017-04-27 22:57:43', 'system', '0');
+INSERT INTO `t_consts_site_carousel` VALUES ('1', '成为高级的android工程师', 'http://xiaojianyu-file-server.oss-cn-shenzhen.aliyuncs.com/student/00aa0b25-1cf9-45f9-a061-3ed9b2f96fde.jpg', 'http://baidu.com', '1', '1', '0000-00-00 00:00:00', 'system', '2018-02-13 14:18:10', 'system', '0');
+INSERT INTO `t_consts_site_carousel` VALUES ('2', '开发跨平台的教育系统', 'http://xiaojianyu-file-server.oss-cn-shenzhen.aliyuncs.com/taoshop/0256794f-f169-45a2-92a8-fb3ea230a7a9.jpg', 'http://baidu.com', '1', '1', '0000-00-00 00:00:00', 'system', '2018-02-13 21:49:17', 'system', '0');
+INSERT INTO `t_consts_site_carousel` VALUES ('3', 'ReactJS实战', 'http://xiaojianyu-file-server.oss-cn-shenzhen.aliyuncs.com/student/00aa0b25-1cf9-45f9-a061-3ed9b2f96fde.jpg', 'http://baidu.com', '1', '1', '0000-00-00 00:00:00', 'system', '2018-02-13 14:19:06', 'system', '0');
+INSERT INTO `t_consts_site_carousel` VALUES ('4', 'AngularJS模仿拉钩网', 'http://xiaojianyu-file-server.oss-cn-shenzhen.aliyuncs.com/taoshop/0256794f-f169-45a2-92a8-fb3ea230a7a9.jpg', 'http://baidu.com', '1', '1', '0000-00-00 00:00:00', 'system', '2018-02-13 21:49:23', 'system', '0');
 
 -- ----------------------------
 -- Table structure for t_course
@@ -225,7 +241,7 @@ CREATE TABLE `t_course` (
   `sub_classify_name` varchar(100) NOT NULL DEFAULT '',
   `direction` varchar(20) NOT NULL DEFAULT '' COMMENT '课程方向',
   `username` varchar(200) NOT NULL DEFAULT '' COMMENT '归属人',
-  `level` tinyint(1) NOT NULL DEFAULT '1' COMMENT '课程级别：1-初级，2-中级，3-高级',
+  `level` varchar(1) NOT NULL DEFAULT '1' COMMENT '课程级别：1-初级，2-中级，3-高级',
   `free` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否免费：0-否，1-是',
   `price` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '课程价格',
   `time` varchar(50) NOT NULL DEFAULT '' COMMENT '时长',
@@ -241,19 +257,19 @@ CREATE TABLE `t_course` (
   `update_user` varchar(32) NOT NULL DEFAULT 'system',
   `del` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COMMENT='课程表';
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COMMENT='课程表';
 
 -- ----------------------------
 -- Records of t_course
 -- ----------------------------
-INSERT INTO `t_course` VALUES ('1', '带您完成神秘的涟漪按钮效果-入门篇', '', 'be', '后端开发', 'java', 'Java', '', 'wangyangming', '3', '0', '149.00', '2小时25分', '1', '', '简介：安卓声音录制与播放功能实现，包括录制到文件、播放文件，可以实现类似于微信的语音消息发送与播放，还包括录制到字节流', '0', '0', '1452', '0000-00-00 00:00:00', 'system', '2017-05-06 16:12:35', 'system', '0');
+INSERT INTO `t_course` VALUES ('1', '带您完成神秘的涟漪按钮效果-入门篇', '', 'be', '后端开发', 'java', 'Java', '', 'wangyangming', '3', '1', '149.00', '2小时25分', '1', '', '简介：安卓声音录制与播放功能实现，包括录制到文件、播放文件，可以实现类似于微信的语音消息发送与播放，还包括录制到字节流', '0', '0', '1452', '0000-00-00 00:00:00', 'system', '2018-02-28 00:23:39', 'system', '0');
 INSERT INTO `t_course` VALUES ('2', 'Vue.js高仿饿了么外卖App 最火前端框架 1.0升级2.0\r\n', '', 'be', '后端开发', 'python', 'python', '', 'wangyangming', '1', '0', '249.00', '2小时25分', '1', '', 'Vue.js高仿饿了么外卖App 最火前端框架 1.0升级2.0\r\nVue.js高仿饿了么外卖App 最火前端框架 1.0升级2.0\r\nvue.js 兼具 angular.js 和 react.js 的优点，并剔除它们的缺点', '0', '0', '1300', '0000-00-00 00:00:00', 'system', '2017-05-06 16:12:35', 'system', '0');
 INSERT INTO `t_course` VALUES ('3', '强力django+杀手级xadmin  打造上线标准的在线教育平台', '', 'be', '后端开发', 'php', 'PHP', '', 'wangyangming', '2', '0', '99.00', '2小时25分', '1', '', '全面掌握django框架,轻松应对python web开发工作', '0', '0', '1452', '0000-00-00 00:00:00', 'system', '2017-05-06 16:12:35', 'system', '0');
 INSERT INTO `t_course` VALUES ('4', '高性能高可用Yii2.0电商平台 高级组件 MySQL LVS', '', 'be', '后端开发', 'java', 'Java', '', 'wangyangming', '2', '1', '0.00', '2小时25分', '1', '', '进阶更高阶的Yii2.0开发，获得2-3年Yii2.0实战经验', '0', '0', '1452', '0000-00-00 00:00:00', 'system', '2017-05-06 16:12:35', 'system', '0');
 INSERT INTO `t_course` VALUES ('5', 'JSP常用标签', '', 'be', '后端开发', 'python', 'python', '', 'wangyangming', '1', '1', '0.00', '2小时25分', '1', '', '配置及使用常用JSTL标签，这是一项必备的基本技能', '0', '1', '1452', '0000-00-00 00:00:00', 'system', '2017-05-06 16:12:35', 'system', '0');
 INSERT INTO `t_course` VALUES ('6', 'AngularJS仿拉勾网WebApp  开发移动端单页应用', '', 'be', '后端开发', 'php', 'PHP', '', 'wangyangming', '2', '0', '100.00', '2小时25分', '1', '', 'AngularJS仿拉勾网WebApp  开发移动端单页应用', '0', '0', '1300', '0000-00-00 00:00:00', 'system', '2017-05-06 16:12:35', 'system', '0');
-INSERT INTO `t_course` VALUES ('7', 'Java 分页原理与实践', '', 'be', '后端开发', 'Java', 'Java', '', 'wangyangming', '1', '0', '89.00', '2小时25分', '1', '', 'Java 分页原理，用Hibernate实现下拉加载分页效果', '0', '0', '1452', '0000-00-00 00:00:00', 'system', '2017-05-06 16:12:35', 'system', '0');
-INSERT INTO `t_course` VALUES ('8', '微信授权登录', '', 'be', '后端开发', 'c', 'C语言', '', 'wangyangming', '3', '1', '0.00', '2小时25分', '1', '', '教你如何用Java实现微信授权登录，最后介绍公众号和开发平台如何关联', '0', '2', '1452', '0000-00-00 00:00:00', 'system', '2017-05-06 16:12:35', 'system', '0');
+INSERT INTO `t_course` VALUES ('7', 'Java 分页原理与实践', '', 'be', '后端开发', 'Java', 'Java', '', 'wangyangming', '1', '0', '89.00', '2小时25分', '1', '', 'Java 分页原理，用Hibernate实现下拉加载分页效果', '0', '0', '1452', '0000-00-00 00:00:00', 'system', '2018-02-25 23:48:56', 'system', '0');
+INSERT INTO `t_course` VALUES ('8', '微信授权登录', '', 'be', '后端开发', 'c', 'C语言', '', 'wangyangming', '3', '1', '0.00', '2小时25分', '0', '', '教你如何用Java实现微信授权登录，最后介绍公众号和开发平台如何关联', '0', '2', '1452', '0000-00-00 00:00:00', 'system', '2018-02-25 16:32:34', 'system', '0');
 INSERT INTO `t_course` VALUES ('9', 'Dwr实现JAVA服务器端向客户端推送消息', '', 'be', '后端开发', 'python', 'python', '', 'wangyangming', '3', '1', '0.00', '2小时25分', '1', '', 'dwr轻松帮你实现server push。', '0', '0', '1300', '0000-00-00 00:00:00', 'system', '2017-05-06 16:12:35', 'system', '0');
 INSERT INTO `t_course` VALUES ('10', 'JS+CSS3实现“粽情端午”', '', 'be', '后端开发', 'c', 'C语言', '', 'wangyangming', '1', '1', '0.00', '2小时25分', '1', '', '用JS和CSS3技术实现3D效果粽子特效动画，掌握动画制作过程', '0', '3', '1452', '0000-00-00 00:00:00', 'system', '2017-05-06 16:12:35', 'system', '0');
 INSERT INTO `t_course` VALUES ('11', 'JS实现人机大战之五子棋（UI篇）', '', 'be', '后端开发', 'c', 'C语言', '', 'wangyangming', '2', '1', '0.00', '2小时25分', '1', '', '利用js及canvas绘图知识，实现程序界面编写和交互逻辑处理', '0', '0', '1552', '0000-00-00 00:00:00', 'system', '2017-05-06 16:12:35', 'system', '0');
@@ -263,14 +279,21 @@ INSERT INTO `t_course` VALUES ('14', '轻松学会Laravel-高级篇sdsdsdsssss',
 INSERT INTO `t_course` VALUES ('15', '基于SSH实现员工管理系统之框架整合篇', '', 'be', '后端开发', 'java', 'Java', '', 'wangyangming', '1', '1', '0.00', '2小时25分', '1', '', '本教程主要介绍环境搭建和SSH框架整合，逐层深入理解学习', '0', '8', '1300', '0000-00-00 00:00:00', 'system', '2017-05-06 16:12:35', 'system', '0');
 INSERT INTO `t_course` VALUES ('16', 'Spring MVC起步', '', 'be', '后端开发', 'java', 'Java', '', 'wangyangming', '1', '1', '0.00', '2小时25分', '0', '', 'Java中Spring MVC框架入门教程，快来看最易用的MVC框架', '0', '0', '1300', '0000-00-00 00:00:00', 'system', '2017-05-06 16:12:35', 'system', '0');
 INSERT INTO `t_course` VALUES ('17', 'Struts2入门', '', 'be', '后端开发', 'java', 'Java', '', 'wangyangming', '2', '1', '0.00', '2小时25分', '0', '', '本教程带你踏上Struts2学习之旅，对Struts2进行更深入讲解', '0', '0', '1300', '0000-00-00 00:00:00', 'system', '2017-05-06 16:12:35', 'system', '0');
-INSERT INTO `t_course` VALUES ('18', 'Java眼中的XML  文件写入', '', 'be', '后端开发', 'java', 'Java', '', 'wangyangming', '1', '1', '0.00', '2小时25分', '1', '', '举例说明JAVA程序如何生成XML文档，多种生成方式任你选择', '0', '1', '1552', '0000-00-00 00:00:00', 'system', '2017-05-06 16:12:35', 'system', '0');
+INSERT INTO `t_course` VALUES ('18', 'Java眼中的XML  文件写入', '', 'be', '后端开发', 'java', 'Java', '', 'wangyangming', '1', '1', '0.00', '2小时25分', '1', '', '举例说明JAVA程序如何生成XML文档，多种生成方式任你选择', '0', '1', '1552', '0000-00-00 00:00:00', 'system', '2018-02-25 16:26:01', 'system', '0');
 INSERT INTO `t_course` VALUES ('19', 'Java实现邮箱验证', '', 'be', '后端开发', 'java', 'Java', '', 'wangyangming', '1', '1', '0.00', '2小时25分', '1', '', '本视频教程主要介绍如何使用JavaMail进行邮箱验证，由浅入深', '0', '2', '1300', '0000-00-00 00:00:00', 'system', '2017-05-06 16:12:35', 'system', '0');
 INSERT INTO `t_course` VALUES ('20', 'JAVA生成二维码', '', 'be', '后端开发', 'java', 'Java', '', 'wangyangming', '1', '0', '299.00', '2小时25分', '1', '', '二维码无处不在，自己动手用Java生成二维码，三种生成方式任你选', '0', '1', '1452', '0000-00-00 00:00:00', 'system', '2017-05-06 16:12:35', 'system', '0');
 INSERT INTO `t_course` VALUES ('21', 'JSP自定义标签', '', 'be', '后端开发', 'java', 'Java', '', 'wangyangming', '1', '1', '0.00', '2小时25分', '0', '', 'JSP自定义标签应用，Java Web开发中一个重要的知识点', '0', '0', '1552', '0000-00-00 00:00:00', 'system', '2017-05-06 16:12:35', 'system', '0');
 INSERT INTO `t_course` VALUES ('22', 'Java高并发秒杀API之高并发优化', '', 'be', '后端开发', 'java', 'Java', '', 'wangyangming', '1', '1', '0.00', '2小时25分', '1', '', 'Java实现高并发秒杀API的第四门课，小伙伴一定可以从中受益', '0', '0', '1552', '0000-00-00 00:00:00', 'system', '2017-05-06 16:12:35', 'system', '0');
-INSERT INTO `t_course` VALUES ('23', '我的测试课程我的测试课程', '', 'fe', '', 'jquery', '', '', 'wangyangming', '1', '1', '100.00', '', '0', '/default/all/0/4fed115013e94fa98ea4ebb7ce8c8ca0.jpeg', '我的测试课程我的测试课程我的测试课程我的测试课程我的测试课程我的测试课程我的测试课程我的测试课程', '0', '3', '0', '0000-00-00 00:00:00', 'system', '2017-05-06 16:12:35', 'system', '0');
-INSERT INTO `t_course` VALUES ('28', '测试批量添加', '', 'fe', '', 'jquery', '', '', 'wangyangming', '1', '1', '0.00', '', '0', '', '我是描述我是描述', '0', '0', '0', '0000-00-00 00:00:00', 'system', '2017-05-06 16:12:35', 'system', '0');
-INSERT INTO `t_course` VALUES ('29', '从0到1', '', 'fe', '', 'jquery', '', '', 'wangyangming', '1', '1', '0.00', '', '0', '/default/all/0/958e97eebe4c48f1a49299ed66c92d71.jpeg', '1111', '0', '0', '0', '0000-00-00 00:00:00', 'system', '2017-05-06 16:12:35', 'system', '0');
+INSERT INTO `t_course` VALUES ('23', '我的测试课程我的测试课程', '', 'fe', '', 'jquery', '', '', 'wangyangming', '1', '1', '100.00', '2小时25分', '1', '/default/all/0/4fed115013e94fa98ea4ebb7ce8c8ca0.jpeg', '我的测试课程我的测试课程我的测试课程我的测试课程我的测试课程我的测试课程我的测试课程我的测试课程', '0', '3', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 16:05:56', 'system', '0');
+INSERT INTO `t_course` VALUES ('28', '测试批量添加', '', 'fe', '', 'jquery', '', '', 'wangyangming', '1', '1', '0.00', '2小时25分', '1', '', '我是描述我是描述', '0', '0', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 16:05:57', 'system', '0');
+INSERT INTO `t_course` VALUES ('29', '从0到1', '', 'fe', '', 'jquery', '', '', 'wangyangming', '1', '1', '0.00', '2小时25分', '0', '/default/all/0/958e97eebe4c48f1a49299ed66c92d71.jpeg', '1111', '0', '0', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 16:05:58', 'system', '0');
+INSERT INTO `t_course` VALUES ('30', 'ceshi', '', 'fe', '后端开发', 'jquery', '', '', 'wangyangming', '1', '1', '0.00', '2小时25分', '1', '', null, '0', '0', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 16:05:58', 'system', '0');
+INSERT INTO `t_course` VALUES ('31', '测试2课程', '', 'fe', '后端开发', 'jquery', '', '', 'wangyangming', '1', '1', '0.00', '2小时25分', '1', '', null, '0', '0', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 16:05:59', 'system', '0');
+INSERT INTO `t_course` VALUES ('32', '测试课程3', '', 'fe', '后端开发', 'jquery', '', '', 'wangyangming', '1', '1', '0.00', '2小时25分', '1', '', null, '0', '0', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 16:06:01', 'system', '0');
+INSERT INTO `t_course` VALUES ('33', '测试课程4', '', 'fe', '后端开发', 'jquery', '', '', '', '1', '1', '0.00', '2小时25分', '1', '', null, '0', '0', '0', '0000-00-00 00:00:00', 'system', '2018-02-21 16:06:00', 'system', '0');
+INSERT INTO `t_course` VALUES ('39', '高分子物理', '', 'fe', '前端开发', 'jquery', '', '', 'wangyangming', '1', '1', '0.00', '', '0', '', '1', '0', '0', '0', '2018-02-26 21:27:28', 'system', '2018-02-26 21:27:28', 'system', '0');
+INSERT INTO `t_course` VALUES ('40', '超级分子物理111', '', 'fe', '前端开发', 'jquery', '', '', 'wangyangming', '1', '1', '0.00', '', '0', '', '1111111111111', '0', '0', '0', '2018-02-26 21:30:32', 'system', '2018-02-26 22:19:49', 'system', '0');
+INSERT INTO `t_course` VALUES ('41', '非常好的化学课', '', 'cb', '云计算&大数据', 'cloud', '', '', 'wangyangming', '1', '1', '0.00', '6666', '0', '', '666', '0', '0', '0', '2018-02-26 21:32:07', 'system', '2018-02-26 22:30:22', 'system', '0');
 
 -- ----------------------------
 -- Table structure for t_course_comment
@@ -286,7 +309,7 @@ CREATE TABLE `t_course_comment` (
   `content` varchar(255) NOT NULL DEFAULT '0' COMMENT '评论内容',
   `ref_id` int(11) NOT NULL DEFAULT '0' COMMENT '引用id',
   `ref_content` varchar(255) NOT NULL DEFAULT '' COMMENT '引用内容',
-  `type` tinyint(11) NOT NULL DEFAULT '0' COMMENT '类型：0-评论；1-答疑QA',
+  `type` varchar(11) NOT NULL DEFAULT '0' COMMENT '类型：0-评论；1-答疑QA',
   `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `create_user` varchar(32) NOT NULL DEFAULT 'system',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -371,7 +394,7 @@ CREATE TABLE `t_course_section` (
   `update_user` varchar(32) NOT NULL DEFAULT 'system',
   `del` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8 COMMENT='课程章节表';
+) ENGINE=InnoDB AUTO_INCREMENT=148 DEFAULT CHARSET=utf8 COMMENT='课程章节表';
 
 -- ----------------------------
 -- Records of t_course_section
@@ -380,26 +403,23 @@ INSERT INTO `t_course_section` VALUES ('1', '1', '0', '第1章 课程介绍', '1
 INSERT INTO `t_course_section` VALUES ('2', '1', '0', '第2章 Java关键字讲解', '2', '', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2017-04-06 23:43:59', 'system', '0');
 INSERT INTO `t_course_section` VALUES ('3', '1', '0', '第3章 语法', '3', '', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2017-04-06 23:44:00', 'system', '0');
 INSERT INTO `t_course_section` VALUES ('4', '1', '0', '第4章 函数', '4', '', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2017-04-06 23:44:01', 'system', '0');
-INSERT INTO `t_course_section` VALUES ('5', '1', '0', '第5章 类', '5', '', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2017-04-11 23:05:55', 'system', '0');
 INSERT INTO `t_course_section` VALUES ('6', '1', '1', '1-1 使用RecyclerView优雅实现复杂布局-课程介绍', '1', '06:55', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2017-04-11 22:49:23', 'system', '0');
-INSERT INTO `t_course_section` VALUES ('7', '1', '1', '1-2 包括录制到文件、播放文件，可以实现类似于微信的语音消息发送与播放111', '1', '07:46', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2017-04-11 22:48:12', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('7', '1', '1', '1-2 包括录制到文件、播放文件，可以实现类似于微信的语音消息发送与播放111', '2', '07:46', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2018-02-28 17:12:33', 'system', '0');
 INSERT INTO `t_course_section` VALUES ('8', '1', '2', '2-1 使用RecyclerView优雅实现复杂布局-课程介绍 ', '1', '06:00', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2017-04-06 23:44:04', 'system', '0');
-INSERT INTO `t_course_section` VALUES ('9', '1', '2', '2-2 包括录制到文件、播放文件，可以实现类似于微信的语音消息发送与播放', '1', '01:30', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2017-04-06 23:44:04', 'system', '0');
-INSERT INTO `t_course_section` VALUES ('10', '1', '2', '2-3 WebGL带你走进浏览器的3D世界', '1', '06:46', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2017-04-06 23:44:04', 'system', '0');
-INSERT INTO `t_course_section` VALUES ('11', '1', '2', '2-4 WebGL带你走进浏览器的3D世界', '1', '07:46', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2017-04-06 23:44:04', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('9', '1', '2', '2-2 包括录制到文件、播放文件，可以实现类似于微信的语音消息发送与播放', '2', '01:30', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2018-02-28 17:12:35', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('10', '1', '2', '2-3 WebGL带你走进浏览器的3D世界', '3', '06:46', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2018-02-28 17:12:38', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('11', '1', '2', '2-4 WebGL带你走进浏览器的3D世界', '4', '07:46', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2018-02-28 17:12:47', 'system', '0');
 INSERT INTO `t_course_section` VALUES ('12', '1', '3', '3-1 变量的定义、赋值、运算 ', '1', '06:00', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2017-04-06 23:44:04', 'system', '0');
-INSERT INTO `t_course_section` VALUES ('13', '1', '3', '3-2 自定义对象User变量的取值 ', '1', '01:30', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2017-04-06 23:44:04', 'system', '0');
-INSERT INTO `t_course_section` VALUES ('14', '1', '3', '3-3 集合List的遍历', '1', '07:33', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2017-04-06 23:44:04', 'system', '0');
-INSERT INTO `t_course_section` VALUES ('15', '1', '3', '3-4 集合Map的遍历', '1', '06:46', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2017-04-06 23:44:04', 'system', '0');
-INSERT INTO `t_course_section` VALUES ('16', '1', '3', '3-5 if语法', '1', '07:46', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2017-04-06 23:44:04', 'system', '0');
-INSERT INTO `t_course_section` VALUES ('17', '1', '3', '3-6 switch语法', '1', '06:00', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2017-04-06 23:44:04', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('13', '1', '3', '3-2 自定义对象User变量的取值 ', '2', '01:30', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2018-02-28 17:12:51', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('14', '1', '3', '3-3 集合List的遍历', '3', '07:33', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2018-02-28 17:12:54', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('15', '1', '3', '3-4 集合Map的遍历', '4', '06:46', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2018-02-28 17:13:03', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('16', '1', '3', '3-5 if语法', '5', '07:46', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2018-02-28 17:13:07', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('17', '1', '3', '3-6 switch语法', '6', '06:00', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2018-02-28 17:13:13', 'system', '0');
 INSERT INTO `t_course_section` VALUES ('18', '1', '4', '4-1 自定义函数章节简介 ', '1', '01:30', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2017-04-06 23:44:04', 'system', '0');
-INSERT INTO `t_course_section` VALUES ('19', '1', '4', '4-2 string基本操作指令', '1', '07:33', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2017-04-06 23:44:04', 'system', '0');
-INSERT INTO `t_course_section` VALUES ('20', '1', '4', '4-3 自定义函数', '1', '06:46', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2017-04-06 23:44:04', 'system', '0');
-INSERT INTO `t_course_section` VALUES ('21', '1', '4', '4-4 list排序内建函数、常用指令', '1', '07:46', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2017-04-06 23:44:04', 'system', '0');
-INSERT INTO `t_course_section` VALUES ('22', '1', '4', '4-5 自定义指令', '1', '06:00', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2017-04-06 23:44:04', 'system', '0');
-INSERT INTO `t_course_section` VALUES ('23', '1', '5', '5-1 类定义', '1', '01:30', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2017-04-11 23:05:54', 'system', '0');
-INSERT INTO `t_course_section` VALUES ('24', '1', '5', '5-2 类创建', '1', '07:33', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2017-04-11 23:05:53', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('19', '1', '4', '4-2 string基本操作指令', '2', '07:33', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2018-02-28 17:13:16', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('20', '1', '4', '4-3 自定义函数', '3', '06:46', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2018-02-28 17:13:19', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('21', '1', '4', '4-4 list排序内建函数、常用指令', '4', '07:46', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2018-02-28 17:13:22', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('22', '1', '4', '4-5 自定义指令', '5', '06:00', '1', 'http://www.baidu.com', '0000-00-00 00:00:00', 'system', '2018-02-28 17:13:42', 'system', '0');
 INSERT INTO `t_course_section` VALUES ('31', '28', '0', '章节001', '1', '23:22', '1', '', '0000-00-00 00:00:00', 'system', '2017-04-15 22:27:17', 'system', '0');
 INSERT INTO `t_course_section` VALUES ('32', '28', '31', '001-001', '1', '23:56', '1', 'http://www.baidu.com', '2017-04-15 00:00:00', '', '2017-04-15 22:27:17', '', '0');
 INSERT INTO `t_course_section` VALUES ('33', '28', '31', '001-002', '2', '23:56', '1', 'http://www.baidu.com', '2017-04-15 00:00:00', '', '2017-04-15 22:27:17', '', '0');
@@ -443,6 +463,41 @@ INSERT INTO `t_course_section` VALUES ('70', '29', '69', '2-001：我是001', '1
 INSERT INTO `t_course_section` VALUES ('71', '29', '69', '2-001：我是002', '2', '08:05', '1', 'http://www.baidu.com', '2017-04-16 00:00:00', 'system', '2017-04-16 14:42:56', 'system', '0');
 INSERT INTO `t_course_section` VALUES ('72', '29', '69', '2-001：我是003', '3', '08:06', '1', 'http://www.baidu.com', '2017-04-16 00:00:00', 'system', '2017-04-16 14:42:56', 'system', '0');
 INSERT INTO `t_course_section` VALUES ('73', '29', '69', '2-001：我是004', '4', '08:07', '1', 'http://www.baidu.com', '2017-04-16 00:00:00', 'system', '2017-04-16 14:42:56', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('94', '4', '0', '1', '0', '', '1', '', '2018-02-25 23:45:29', 'system', '2018-02-25 23:45:29', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('95', '4', '94', '1', '1', '00:00', '1', '1', '2018-02-25 23:45:29', 'system', '2018-02-25 23:45:29', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('98', '38', '0', '1', '0', '', '0', '', '2018-02-26 21:20:04', 'system', '2018-02-26 21:20:04', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('99', '38', '98', '1', '1', '00:00', '0', '1', '2018-02-26 21:20:04', 'system', '2018-02-26 21:20:04', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('100', '38', '98', '2', '2', '00:00', '0', '2', '2018-02-26 21:20:04', 'system', '2018-02-26 21:20:04', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('101', '38', '0', '1', '3', '', '0', '', '2018-02-26 21:20:04', 'system', '2018-02-26 21:20:04', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('102', '38', '101', '1', '4', '00:00', '0', '1', '2018-02-26 21:20:04', 'system', '2018-02-26 21:20:04', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('105', '39', '0', '1', '0', '', '0', '', '2018-02-26 21:27:59', 'system', '2018-02-26 21:27:59', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('106', '39', '105', '1', '1', '00:00', '0', '1', '2018-02-26 21:28:07', 'system', '2018-02-26 21:28:07', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('107', '39', '105', '1', '2', '00:00', '0', '1', '2018-02-26 21:28:11', 'system', '2018-02-26 21:28:11', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('108', '40', '0', '第一章 大五里', '0', '', '0', '', '2018-02-26 21:31:22', 'system', '2018-02-26 21:31:22', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('109', '40', '108', '1-1', '1', '00:00', '0', 'w', '2018-02-26 21:31:22', 'system', '2018-02-26 21:31:22', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('110', '40', '0', '第二章 小屋里', '2', '', '0', '', '2018-02-26 21:31:22', 'system', '2018-02-26 21:31:22', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('111', '40', '110', '2-1', '3', '00:00', '0', 'w', '2018-02-26 21:31:22', 'system', '2018-02-26 21:31:22', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('112', '40', '110', '2-2', '4', '00:00', '0', 'w', '2018-02-26 21:31:22', 'system', '2018-02-26 21:31:22', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('113', '41', '0', '第一章', '0', '', '0', '', '2018-02-26 21:32:40', 'system', '2018-02-26 21:32:40', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('114', '41', '113', '1-1', '1', '00:00', '0', 'w', '2018-02-26 21:32:40', 'system', '2018-02-26 21:32:40', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('115', '41', '113', '1-2', '2', '00:00', '0', 'w', '2018-02-26 21:32:40', 'system', '2018-02-26 21:32:40', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('116', '41', '0', '第二章', '3', '', '0', '', '2018-02-26 21:32:40', 'system', '2018-02-26 21:32:40', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('117', '41', '116', '2-1', '4', '09:00', '0', 'w', '2018-02-26 21:32:40', 'system', '2018-02-26 21:32:40', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('124', '5', '0', '第一章', '0', '', '1', '', '2018-02-28 15:48:28', 'system', '2018-02-28 15:48:28', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('125', '5', '124', '1-1', '1', '00:00', '1', 'wwwwwww', '2018-02-28 15:48:28', 'system', '2018-02-28 15:48:28', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('126', '5', '124', '2-1', '2', '00:00', '1', 'wwwwwww', '2018-02-28 15:48:28', 'system', '2018-02-28 15:48:28', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('127', '5', '0', '第二章', '1', '', '1', '', '2018-02-28 15:49:13', 'system', '2018-02-28 15:49:13', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('128', '5', '127', '2-1', '2', '00:00', '1', 'w', '2018-02-28 15:49:13', 'system', '2018-02-28 15:49:13', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('129', '5', '127', '2-2', '3', '00:00', '1', 'w', '2018-02-28 15:49:13', 'system', '2018-02-28 15:49:13', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('136', '2', '0', '第一章', '0', '', '1', '', '2018-02-28 16:04:27', 'system', '2018-02-28 20:14:11', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('137', '2', '136', '1-1', '0', '00:00', '1', 'www', '2018-02-28 16:04:27', 'system', '2018-02-28 20:31:11', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('138', '2', '136', '1-2', '1', '00:00', '1', 'www', '2018-02-28 16:04:27', 'system', '2018-02-28 20:33:06', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('139', '2', '0', '第二章', '1', '', '1', '', '2018-02-28 16:04:46', 'system', '2018-02-28 20:14:24', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('140', '2', '139', '2-1', '0', '00:00', '1', 'www', '2018-02-28 16:04:46', 'system', '2018-02-28 20:31:17', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('141', '2', '139', '2-2', '1', '00:00', '1', 'www', '2018-02-28 16:04:46', 'system', '2018-02-28 20:31:17', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('144', '2', '139', '2-3', '2', '09:00', '1', 'www', '2018-02-28 18:42:54', 'system', '2018-02-28 20:31:28', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('145', '2', '0', '第三章', '2', '', '1', '', '2018-02-28 19:07:46', 'system', '2018-02-28 20:14:24', 'system', '0');
+INSERT INTO `t_course_section` VALUES ('146', '2', '145', '3-1', '0', '00:00', '1', 'w', '2018-02-28 19:07:46', 'system', '2018-02-28 19:07:46', 'system', '0');
 
 -- ----------------------------
 -- Table structure for t_user_collections
@@ -460,13 +515,14 @@ CREATE TABLE `t_user_collections` (
   `update_user` varchar(32) NOT NULL DEFAULT 'system',
   `del` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='用户收藏';
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COMMENT='用户收藏';
 
 -- ----------------------------
 -- Records of t_user_collections
 -- ----------------------------
 INSERT INTO `t_user_collections` VALUES ('4', '1', '1', '1', '', '2017-05-06 12:00:40', 'system', '2017-05-06 16:16:36', 'system', '0');
 INSERT INTO `t_user_collections` VALUES ('5', '1', '1', '20', '', '2017-05-06 12:00:40', 'system', '2017-05-06 16:16:38', 'system', '0');
+INSERT INTO `t_user_collections` VALUES ('40', '29', '2', '2', '', '2018-02-21 18:31:34', 'system', '2018-02-21 18:31:34', 'system', '0');
 
 -- ----------------------------
 -- Table structure for t_user_course_section
@@ -477,7 +533,7 @@ CREATE TABLE `t_user_course_section` (
   `user_id` int(11) NOT NULL DEFAULT '0' COMMENT '用户id',
   `course_id` int(11) NOT NULL DEFAULT '0' COMMENT '课程id',
   `section_id` int(11) NOT NULL DEFAULT '0' COMMENT '章节id',
-  `status` int(11) NOT NULL DEFAULT '0' COMMENT '状态：0-学习中；1-学习结束',
+  `status` varchar(1) NOT NULL DEFAULT '0' COMMENT '状态：0-学习中；1-学习结束',
   `rate` int(11) NOT NULL DEFAULT '0',
   `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `create_user` varchar(32) NOT NULL DEFAULT 'system',
@@ -485,23 +541,32 @@ CREATE TABLE `t_user_course_section` (
   `update_user` varchar(32) NOT NULL DEFAULT 'system',
   `del` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='用户学习章节表';
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COMMENT='用户学习章节表';
 
 -- ----------------------------
 -- Records of t_user_course_section
 -- ----------------------------
-INSERT INTO `t_user_course_section` VALUES ('1', '1', '1', '7', '1', '50', '2017-05-03 00:00:00', 'system', '2017-05-06 15:57:39', 'system', '0');
-INSERT INTO `t_user_course_section` VALUES ('2', '1', '1', '8', '1', '60', '2017-05-03 00:00:00', 'system', '2017-05-06 15:57:41', 'system', '0');
-INSERT INTO `t_user_course_section` VALUES ('3', '1', '1', '12', '0', '0', '2017-05-03 00:00:00', 'wangyangming', '2017-05-06 23:48:21', 'wangyangming', '0');
-INSERT INTO `t_user_course_section` VALUES ('4', '1', '1', '23', '0', '0', '2017-05-04 00:00:00', 'wangyangming', '2017-05-04 00:01:50', 'wangyangming', '0');
-INSERT INTO `t_user_course_section` VALUES ('5', '2', '1', '24', '0', '0', '2017-05-04 00:00:00', 'wangyangming', '2017-05-06 14:31:16', 'wangyangming', '0');
-INSERT INTO `t_user_course_section` VALUES ('6', '2', '1', '6', '0', '0', '2017-05-04 00:00:00', 'wangyangming', '2017-05-06 14:31:17', 'wangyangming', '0');
-INSERT INTO `t_user_course_section` VALUES ('7', '3', '1', '13', '0', '0', '2017-05-04 00:00:00', 'wangyangming', '2017-05-06 14:31:18', 'wangyangming', '0');
-INSERT INTO `t_user_course_section` VALUES ('8', '3', '1', '14', '0', '0', '2017-05-04 00:00:00', 'wangyangming', '2017-05-06 14:31:18', 'wangyangming', '0');
-INSERT INTO `t_user_course_section` VALUES ('9', '1', '1', '15', '0', '0', '2017-05-04 00:00:00', 'wangyangming', '2017-05-04 22:43:44', 'wangyangming', '0');
-INSERT INTO `t_user_course_section` VALUES ('10', '4', '1', '21', '0', '0', '2017-05-04 00:00:00', 'wangyangming', '2017-05-06 14:31:21', 'wangyangming', '0');
-INSERT INTO `t_user_course_section` VALUES ('11', '4', '1', '9', '0', '0', '2017-05-04 00:00:00', 'wangyangming', '2017-05-06 14:31:22', 'wangyangming', '0');
-INSERT INTO `t_user_course_section` VALUES ('12', '1', '1', '9', '0', '0', '2017-05-06 00:00:00', 'wangyangming', '2017-05-06 16:32:24', 'wangyangming', '0');
+INSERT INTO `t_user_course_section` VALUES ('13', '29', '1', '1', '0', '0', '2018-02-22 00:01:52', 'xjy', '2018-02-22 00:01:52', 'xjy', '0');
+INSERT INTO `t_user_course_section` VALUES ('14', '29', '1', '2', '0', '0', '2018-02-22 00:01:52', 'xjy', '2018-02-22 00:01:52', 'xjy', '0');
+INSERT INTO `t_user_course_section` VALUES ('15', '29', '1', '3', '0', '0', '2018-02-22 00:01:52', 'xjy', '2018-02-22 00:01:52', 'xjy', '0');
+INSERT INTO `t_user_course_section` VALUES ('16', '29', '1', '4', '0', '0', '2018-02-22 00:01:52', 'xjy', '2018-02-22 00:01:52', 'xjy', '0');
+INSERT INTO `t_user_course_section` VALUES ('18', '29', '1', '6', '0', '0', '2018-02-22 00:01:52', 'xjy', '2018-02-22 00:01:52', 'xjy', '0');
+INSERT INTO `t_user_course_section` VALUES ('19', '29', '1', '7', '0', '0', '2018-02-22 00:01:52', 'xjy', '2018-02-22 00:01:52', 'xjy', '0');
+INSERT INTO `t_user_course_section` VALUES ('20', '29', '1', '8', '0', '0', '2018-02-22 00:01:52', 'xjy', '2018-02-22 00:01:52', 'xjy', '0');
+INSERT INTO `t_user_course_section` VALUES ('21', '29', '1', '9', '0', '0', '2018-02-22 00:01:52', 'xjy', '2018-02-22 00:01:52', 'xjy', '0');
+INSERT INTO `t_user_course_section` VALUES ('22', '29', '1', '10', '0', '0', '2018-02-22 00:01:52', 'xjy', '2018-02-22 00:01:52', 'xjy', '0');
+INSERT INTO `t_user_course_section` VALUES ('23', '29', '1', '11', '0', '0', '2018-02-22 00:01:52', 'xjy', '2018-02-22 00:01:52', 'xjy', '0');
+INSERT INTO `t_user_course_section` VALUES ('24', '29', '1', '12', '0', '0', '2018-02-22 00:01:52', 'xjy', '2018-02-22 00:01:52', 'xjy', '0');
+INSERT INTO `t_user_course_section` VALUES ('25', '29', '1', '13', '0', '0', '2018-02-22 00:01:52', 'xjy', '2018-02-22 00:01:52', 'xjy', '0');
+INSERT INTO `t_user_course_section` VALUES ('26', '29', '1', '14', '0', '0', '2018-02-22 00:01:52', 'xjy', '2018-02-22 00:01:52', 'xjy', '0');
+INSERT INTO `t_user_course_section` VALUES ('27', '29', '1', '15', '0', '0', '2018-02-22 00:01:52', 'xjy', '2018-02-22 00:01:52', 'xjy', '0');
+INSERT INTO `t_user_course_section` VALUES ('28', '29', '1', '16', '0', '0', '2018-02-22 00:01:52', 'xjy', '2018-02-22 00:01:52', 'xjy', '0');
+INSERT INTO `t_user_course_section` VALUES ('29', '29', '1', '17', '0', '0', '2018-02-22 00:01:52', 'xjy', '2018-02-22 00:01:52', 'xjy', '0');
+INSERT INTO `t_user_course_section` VALUES ('30', '29', '1', '18', '0', '0', '2018-02-22 00:01:52', 'xjy', '2018-02-22 00:01:52', 'xjy', '0');
+INSERT INTO `t_user_course_section` VALUES ('31', '29', '1', '19', '0', '0', '2018-02-22 00:01:52', 'xjy', '2018-02-22 00:01:52', 'xjy', '0');
+INSERT INTO `t_user_course_section` VALUES ('32', '29', '1', '20', '0', '0', '2018-02-22 00:01:52', 'xjy', '2018-02-22 00:01:52', 'xjy', '0');
+INSERT INTO `t_user_course_section` VALUES ('33', '29', '1', '21', '0', '0', '2018-02-22 00:01:52', 'xjy', '2018-02-22 00:01:52', 'xjy', '0');
+INSERT INTO `t_user_course_section` VALUES ('34', '29', '1', '22', '0', '0', '2018-02-22 00:01:52', 'xjy', '2018-02-22 00:01:52', 'xjy', '0');
 
 -- ----------------------------
 -- Table structure for t_user_follows
@@ -517,7 +582,7 @@ CREATE TABLE `t_user_follows` (
   `update_user` varchar(32) NOT NULL DEFAULT 'system',
   `del` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='用户关注';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='用户关注';
 
 -- ----------------------------
 -- Records of t_user_follows
@@ -526,6 +591,7 @@ INSERT INTO `t_user_follows` VALUES ('1', '1', '2', '0000-00-00 00:00:00', 'syst
 INSERT INTO `t_user_follows` VALUES ('2', '1', '3', '0000-00-00 00:00:00', 'system', '2017-05-06 14:21:08', 'system', '0');
 INSERT INTO `t_user_follows` VALUES ('3', '1', '4', '0000-00-00 00:00:00', 'system', '2017-05-06 14:21:10', 'system', '0');
 INSERT INTO `t_user_follows` VALUES ('4', '1', '5', '0000-00-00 00:00:00', 'system', '2017-05-06 14:21:16', 'system', '0');
+INSERT INTO `t_user_follows` VALUES ('6', '1', '29', '2018-02-22 01:18:22', 'xjy', '2018-02-22 01:18:22', 'xjy', '0');
 
 -- ----------------------------
 -- Table structure for t_user_message
@@ -538,7 +604,7 @@ CREATE TABLE `t_user_message` (
   `send_user_name` varchar(20) NOT NULL DEFAULT '' COMMENT '消息发起用户名称',
   `ref_id` varchar(50) NOT NULL DEFAULT '0' COMMENT '引用id',
   `ref_Content` varchar(256) NOT NULL DEFAULT '' COMMENT '引用内容',
-  `type` tinyint(1) NOT NULL DEFAULT '0' COMMENT '通知的类型，1-评论，2-关注，3-答疑',
+  `type` varchar(1) NOT NULL DEFAULT '0' COMMENT '通知的类型，1-评论，2-关注，3-答疑',
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '未读（0）、已读（1）',
   `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `create_user` varchar(32) NOT NULL DEFAULT 'system',

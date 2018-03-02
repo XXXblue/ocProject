@@ -185,4 +185,12 @@
       del = #{del,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="getSelectionByCourseId" parameterType="map" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM t_course_section
+    WHERE course_id = #{courseId}
+  </select>
+
 </mapper>

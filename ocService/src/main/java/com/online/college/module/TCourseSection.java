@@ -1,7 +1,15 @@
 package com.online.college.module;
 
-import java.util.Date;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
+import java.util.Date;
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class TCourseSection {
     private Integer id;
 

@@ -1,8 +1,16 @@
 package com.online.college.module;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import java.math.BigDecimal;
 import java.util.Date;
-
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class TCourse {
     private Integer id;
 
@@ -22,7 +30,7 @@ public class TCourse {
 
     private String username;
 
-    private Boolean level;
+    private String level;
 
     private Boolean free;
 
@@ -124,12 +132,12 @@ public class TCourse {
         this.username = username == null ? null : username.trim();
     }
 
-    public Boolean getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(Boolean level) {
-        this.level = level;
+    public void setLevel(String level) {
+        this.level = level == null ? null : level.trim();
     }
 
     public Boolean getFree() {

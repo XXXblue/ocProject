@@ -150,4 +150,21 @@
       del = #{del,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="getAll" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM t_consts_classify
+  </select>
+
+  <select id="getByCode" resultMap="BaseResultMap" parameterType="string">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM t_consts_classify
+    <trim prefix="WHERE " prefixOverrides="AND |OR ">
+      <if test="code != null">
+        AND code = #{code}
+      </if>
+    </trim>
+  </select>
 </mapper>

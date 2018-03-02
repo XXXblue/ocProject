@@ -21,7 +21,7 @@ public class TCourseComment {
 
     private String refContent;
 
-    private Byte type;
+    private String type;
 
     private Date createTime;
 
@@ -105,12 +105,12 @@ public class TCourseComment {
         this.refContent = refContent == null ? null : refContent.trim();
     }
 
-    public Byte getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(Byte type) {
-        this.type = type;
+    public void setType(String type) {
+        this.type = type == null ? null : type.trim();
     }
 
     public Date getCreateTime() {

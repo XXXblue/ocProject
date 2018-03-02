@@ -125,4 +125,12 @@
       del = #{del,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selByUserIdAndFollowId" parameterType="map" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM t_user_follows
+    WHERE user_id = #{userId}
+    AND follow_id = #{followId}
+  </select>
 </mapper>

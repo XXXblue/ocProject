@@ -1,7 +1,13 @@
 package com.online.college.module;
 
-import java.util.Date;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
+import java.util.Date;
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class TAuthUser {
     private Integer id;
 
@@ -17,7 +23,7 @@ public class TAuthUser {
 
     private String mobile;
 
-    private Boolean status;
+    private String status;
 
     private Date birthday;
 
@@ -117,12 +123,12 @@ public class TAuthUser {
         this.mobile = mobile == null ? null : mobile.trim();
     }
 
-    public Boolean getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
-        this.status = status;
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
     }
 
     public Date getBirthday() {

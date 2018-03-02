@@ -150,4 +150,12 @@
       del = #{del,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByUserIdAndCourseId" parameterType="map" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM t_user_collections
+    WHERE user_id = #{id}
+    AND object_id = #{courseId}
+  </select>
 </mapper>

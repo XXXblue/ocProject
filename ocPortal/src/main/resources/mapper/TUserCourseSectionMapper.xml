@@ -6,7 +6,7 @@
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="course_id" property="courseId" jdbcType="INTEGER" />
     <result column="section_id" property="sectionId" jdbcType="INTEGER" />
-    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
     <result column="rate" property="rate" jdbcType="INTEGER" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="create_user" property="createUser" jdbcType="VARCHAR" />
@@ -34,7 +34,7 @@
       create_time, create_user, update_time, 
       update_user, del)
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, 
-      #{sectionId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{rate,jdbcType=INTEGER}, 
+      #{sectionId,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, #{rate,jdbcType=INTEGER}, 
       #{createTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{updateUser,jdbcType=VARCHAR}, #{del,jdbcType=BIT})
   </insert>
@@ -89,7 +89,7 @@
         #{sectionId,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
-        #{status,jdbcType=INTEGER},
+        #{status,jdbcType=VARCHAR},
       </if>
       <if test="rate != null" >
         #{rate,jdbcType=INTEGER},
@@ -124,7 +124,7 @@
         section_id = #{sectionId,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
-        status = #{status,jdbcType=INTEGER},
+        status = #{status,jdbcType=VARCHAR},
       </if>
       <if test="rate != null" >
         rate = #{rate,jdbcType=INTEGER},
@@ -152,7 +152,7 @@
     set user_id = #{userId,jdbcType=INTEGER},
       course_id = #{courseId,jdbcType=INTEGER},
       section_id = #{sectionId,jdbcType=INTEGER},
-      status = #{status,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR},
       rate = #{rate,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       create_user = #{createUser,jdbcType=VARCHAR},
@@ -161,4 +161,24 @@
       del = #{del,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <insert id="batchInsert" parameterType="map">
+    insert into t_user_course_section (user_id, course_id,
+      section_id, status, rate,
+      create_time, create_user, update_time,
+      update_user, del)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.userId},#{item.courseId},#{item.sectionId},#{item.status}
+      ,#{item.rate},#{item.createTime},#{item.createUser},#{item.updateTime},#{item.updateUser}
+      ,#{item.del})
+    </foreach>
+  </insert>
+
+  <select id="getByAuthAndCourseId" parameterType="map" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM t_user_course_section
+    WHERE user_id = #{id} AND course_id = #{courseId}
+  </select>
 </mapper>

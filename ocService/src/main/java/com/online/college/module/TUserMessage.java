@@ -15,7 +15,7 @@ public class TUserMessage {
 
     private String refContent;
 
-    private Boolean type;
+    private String type;
 
     private Boolean status;
 
@@ -77,12 +77,12 @@ public class TUserMessage {
         this.refContent = refContent == null ? null : refContent.trim();
     }
 
-    public Boolean getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(Boolean type) {
-        this.type = type;
+    public void setType(String type) {
+        this.type = type == null ? null : type.trim();
     }
 
     public Boolean getStatus() {

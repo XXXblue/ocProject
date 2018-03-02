@@ -1,7 +1,15 @@
 package com.online.college.module;
 
-import java.util.Date;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
+import java.util.Date;
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class TUserCourseSection {
     private Integer id;
 
@@ -11,7 +19,7 @@ public class TUserCourseSection {
 
     private Integer sectionId;
 
-    private Integer status;
+    private String status;
 
     private Integer rate;
 
@@ -57,12 +65,12 @@ public class TUserCourseSection {
         this.sectionId = sectionId;
     }
 
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
     }
 
     public Integer getRate() {
